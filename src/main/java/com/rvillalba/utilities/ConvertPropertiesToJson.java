@@ -26,13 +26,6 @@ import com.google.gson.GsonBuilder;
 
 public class ConvertPropertiesToJson {
 
-    public static void main(String[] args) {
-        String base = args[0];
-        System.out.println("INIT CONVERTER PROPERTIES TO JSON");
-        convertPropertiesToJson(base + "/src/main/resources/messages_en_US.properties", base);
-        System.out.println("END CONVERTER PROPERTIES TO JSON");
-    }
-
     public static void convertJsonToProperties(String fileName) {
         ObjectMapper mapper = new ObjectMapper();
         try {
@@ -41,7 +34,7 @@ public class ConvertPropertiesToJson {
             StringBuilder properties = new StringBuilder();
             addProperty(map, properties, null);
             createFile(properties.toString(),
-                    "/target/" + fileName.split("locale-")[1].replace(".json", ".properties"));
+                    "target/messages_" + fileName.split("locale-")[1].replace(".json", ".properties"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -113,7 +106,7 @@ public class ConvertPropertiesToJson {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             String json = gson.toJson(fileToMap);
             createFile(json.toString().replace("\\\\", "\\").replace("\\:", ":").replace("\\!", "!").replace("\\#", "#"),
-                    base + "/target/locale-" + fileName.split("messages_")[1].replace(".properties", ".json"));
+                    base + "target/locale-" + fileName.split("messages_")[1].replace(".properties", ".json"));
         } catch (IOException e) {
             e.printStackTrace();
         }

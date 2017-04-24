@@ -1,0 +1,9 @@
+{
+  "thankyou": "Thank you for registering.",
+  "personBean": {
+    "firstName": "First name",
+    "lastName": "Last name",
+    "age": "Age",
+    "email": "Email"
+  }
+}
